@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
+    public UIController UIC;
 
     [Header("Movement Properties")]
     public float moveSpeed = 10.0f;
@@ -54,4 +55,14 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(groundCheck.position, Radius);
     }
+
+    //Take damage on hazard
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Hazard"))
+        {
+            UIC.takeDamage(5);
+        }
+    }
+   
 }
