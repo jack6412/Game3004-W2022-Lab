@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     public bool isGround;
 
+    [Header("Joystick Controller")]
+    public GameObject miniMap;
+    public GameObject ScreamSontrols;
+    public Joystick L_Joystick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +40,8 @@ public class PlayerController : MonoBehaviour
             velocity.y = -2.0f;
         }
 
-        float x = Input.GetAxis("Horizontal"),
-              z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal") + L_Joystick.Horizontal,
+              z = Input.GetAxis("Vertical") + L_Joystick.Vertical;
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * moveSpeed * Time.deltaTime);
@@ -63,6 +68,19 @@ public class PlayerController : MonoBehaviour
         {
             UIC.takeDamage(5);
         }
+    }
+
+    //Button controler
+    public void OnButJump()
+    {
+        if (isGround)
+        {
+            velocity.y = Mathf.Sqrt(jumpHight * -2.0f * gravity);
+        }
+    }
+    public void OnButMap()
+    {
+        miniMap.SetActive(!miniMap.activeInHierarchy);
     }
    
 }
