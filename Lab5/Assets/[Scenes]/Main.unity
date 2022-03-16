@@ -3897,7 +3897,7 @@ PrefabInstance:
       objectReference: {fileID: 1235450981023287018}
     - target: {fileID: 4257702345818115970, guid: 776f6a62bf966a144ad50f47a104d35d, type: 3}
       propertyPath: controlSensitivity
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4257702346518779475, guid: 776f6a62bf966a144ad50f47a104d35d, type: 3}
       propertyPath: UIC
