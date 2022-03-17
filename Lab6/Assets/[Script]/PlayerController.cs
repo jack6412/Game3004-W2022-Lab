@@ -21,13 +21,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("Joystick Controller")]
     public GameObject miniMap;
-    public GameObject ScreamSontrols;
+    public GameObject ScreamControls;
     public Joystick L_Joystick;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            ScreamControls.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -53,6 +57,9 @@ public class PlayerController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetKeyDown(KeyCode.M))
+            miniMap.SetActive(!miniMap.activeInHierarchy);
     }
 
     private void OnDrawGizmos()

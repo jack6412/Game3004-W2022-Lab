@@ -376,5 +376,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isGround: 0
-  ScreamSontrols: {fileID: 0}
+  miniMap: {fileID: 0}
+  ScreamControls: {fileID: 0}
   L_Joystick: {fileID: 0}

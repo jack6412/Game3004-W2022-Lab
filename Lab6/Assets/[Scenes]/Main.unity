@@ -469,8 +469,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 426600235}
-  - {fileID: 2070574764}
   - {fileID: 991498185}
   - {fileID: 1036522455}
   - {fileID: 1771106868}
@@ -774,12 +772,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 547596991}
-  m_Father: {fileID: 229507209}
-  m_RootOrder: 0
+  m_Father: {fileID: 1771106868}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -300}
+  m_AnchoredPosition: {x: 92.01172, y: 412}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &426600236
@@ -1227,6 +1225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1311,6 +1310,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &780823239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1543,7 @@ RectTransform:
   m_Children:
   - {fileID: 1159680701}
   m_Father: {fileID: 229507209}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1733,7 +1752,7 @@ RectTransform:
   - {fileID: 1090509498}
   - {fileID: 527080109}
   m_Father: {fileID: 229507209}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3005,6 +3024,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1235450982492402909, guid: 6f342add5318e22439f457d59346ca21, type: 3}
   m_PrefabInstance: {fileID: 1235450981023287017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1846181698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1235450982492402906, guid: 6f342add5318e22439f457d59346ca21, type: 3}
+  m_PrefabInstance: {fileID: 1235450981023287017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1853196896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,12 +3399,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2101420798}
-  m_Father: {fileID: 229507209}
-  m_RootOrder: 1
+  m_Father: {fileID: 1771106868}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -300}
+  m_AnchoredPosition: {x: 392.0116, y: 412}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070574765
@@ -3787,6 +3811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: But_Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 1235450982492402906, guid: 6f342add5318e22439f457d59346ca21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1235450982492402909, guid: 6f342add5318e22439f457d59346ca21, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3797,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1235450982492402909, guid: 6f342add5318e22439f457d59346ca21, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1235450982492402909, guid: 6f342add5318e22439f457d59346ca21, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3911,6 +3939,10 @@ PrefabInstance:
       propertyPath: L_Joystick
       value: 
       objectReference: {fileID: 1096176529}
+    - target: {fileID: 4257702346518779475, guid: 776f6a62bf966a144ad50f47a104d35d, type: 3}
+      propertyPath: ScreamControls
+      value: 
+      objectReference: {fileID: 1846181698}
     - target: {fileID: 4257702346518779475, guid: 776f6a62bf966a144ad50f47a104d35d, type: 3}
       propertyPath: ScreamSontrols
       value: 
