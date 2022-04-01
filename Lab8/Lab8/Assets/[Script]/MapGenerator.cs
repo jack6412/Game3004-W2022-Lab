@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    [Header("Player Spawn")]
+    public Transform player;
+    public Transform spawnPlace;
+
     [Header("World Properties")]
     [Range(8,64)]
     public int Hight = 8;
@@ -78,9 +82,79 @@ public class MapGenerator : MonoBehaviour
     private void GenerataCenter()
     {
         Initialize();
-        Reset();
+        ResetMap();
         Generater();
+        //DisableCollider();
+        RemoveTiles();
+        PlayerPosition();
     }
+
+    private void PlayerPosition()
+    {
+        player.gameObject.GetComponent<CharacterController>().enabled = false;
+        player.position = new Vector3(Width * .5f, Hight * 2.0f, Depth * .5f);
+        spawnPlace.position = player.position;
+        player.gameObject.GetComponent<CharacterController>().enabled = true;
+    }
+
+    //check for tile and disable the tile not been use
+    private void DisableCollider()
+    {
+        var normalArr = new Vector3[] { Vector3.up, Vector3.down, Vector3.right, Vector3.left, Vector3.forward, Vector3.back };
+        List<GameObject> disableTile = new List<GameObject>();
+
+        foreach (var t in grid)
+        {
+            int collisionCounter = 0;
+            //check tile contect
+            for (int i = 0; i < normalArr.Length; i++)
+            {
+                if (Physics.Raycast(t.transform.position, normalArr[i], t.transform.localScale.magnitude * 03f))
+                    collisionCounter++;
+            }
+
+            if (collisionCounter > 5)
+                disableTile.Add(t);
+        }
+
+        foreach (var t in disableTile)
+        {
+            var boxCollider = t.GetComponent<BoxCollider>();
+            var meshRender = t.GetComponent<MeshRenderer>();
+
+            boxCollider.enabled = false;
+            meshRender.enabled = false;
+        }
+    }
+    private void RemoveTiles()
+    {
+        var normalArr = new Vector3[] { Vector3.up, Vector3.down, Vector3.right, Vector3.left, Vector3.forward, Vector3.back };
+        List<GameObject> TileRemove = new List<GameObject>();
+
+        foreach (var t in grid)
+        {
+            int collisionCounter = 0;
+            //check tile contect
+            for (int i = 0; i < normalArr.Length; i++)
+            {
+                if (Physics.Raycast(t.transform.position, normalArr[i], t.transform.localScale.magnitude * 03f))
+                    collisionCounter++;
+            }
+
+            if (collisionCounter > 5)
+                TileRemove.Add(t);
+        }
+
+        int size = TileRemove.Count;
+        for (int i = 0; i < size; i++)
+        {
+            grid.Remove(TileRemove[i]);
+            Destroy(TileRemove[i].gameObject);
+        }
+
+
+    }
+
     private void Initialize()
     {
         startDepth = Depth;
@@ -89,13 +163,18 @@ public class MapGenerator : MonoBehaviour
         startMax = max;
         startMin = min;
     }
-    private void Reset()
+    private void ResetMap()
     {
-        foreach(var t in grid)
+        var size = grid.Count;
+
+        for (int i = 0; i < size; i++)
         {
-            Destroy(t);
+            grid[i].GetComponent<BoxCollider>().enabled = false;
+            Destroy(grid[i]);
         }
+        
+
         grid.Clear();
     }
-
+    
 }
